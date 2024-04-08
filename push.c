@@ -6,7 +6,7 @@
 /*   By: ydoumas <ydoumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:54:21 by ydoumas           #+#    #+#             */
-/*   Updated: 2024/02/29 19:11:38 by ydoumas          ###   ########.fr       */
+/*   Updated: 2024/04/08 06:06:57 by ydoumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	push(t_node **stack_a, t_node **stack_b)
 {
-	t_node *head1;
-	t_node *head2;
-	t_node *tmp;
+	t_node	*head1;
+	t_node	*head2;
+	t_node	*tmp;
 
-	if(!(*stack_b))
+	if (!(*stack_b))
 		return ;
 	head1 = *stack_a;
 	head2 = *stack_b;
@@ -30,6 +30,7 @@ static void	push(t_node **stack_a, t_node **stack_b)
 	*stack_a = head1;
 	*stack_b = head2;
 }
+
 void	pa(t_node **stack_a, t_node **stack_b)
 {
 	if (!(*stack_b))
@@ -37,6 +38,7 @@ void	pa(t_node **stack_a, t_node **stack_b)
 	write(1, "pa\n", 3);
 	push(stack_a, stack_b);
 }
+
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	if (!(*stack_a))
@@ -44,6 +46,3 @@ void	pb(t_node **stack_a, t_node **stack_b)
 	write(1, "pb\n", 3);
 	push(stack_b, stack_a);
 }
-
-
-

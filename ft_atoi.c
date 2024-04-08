@@ -6,7 +6,7 @@
 /*   By: ydoumas <ydoumas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:51:17 by ydoumas           #+#    #+#             */
-/*   Updated: 2024/02/25 16:41:10 by ydoumas          ###   ########.fr       */
+/*   Updated: 2024/04/08 06:58:35 by ydoumas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 long	ft_atoi(const char *str)
 {
-	long	c;
-	int	i;
+	int		i;
 	int		sign;
+	long	tmp[3];
 
 	i = 0;
-	c = 0;
+	tmp[2] = 0;
 	sign = 1;
 	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
 		i++;
@@ -31,28 +31,12 @@ long	ft_atoi(const char *str)
 	}
 	while (str[i] <= '9' && str[i] >= '0')
 	{
-		long tmpc;
-		tmpc = c;
-		c = c * 10 + str[i] - 48;
-		long tmp = (c  - (str[i] - 48))/10;
-		// printf("tmp : %zu   c: %zu\n",tmp,tmpc);
-		if(tmp != tmpc)
-		{
-			return 9999999999999;
-		}
-
-		
-		// if (c >= __LONG_MAX__ && sign == 1)
-		// 	return (-1);
-		// else if (c >= __LONG_MAX__ && sign == -1)
-		// 	return (0);
-		// if ((c > INT_MAX && sign == 1) || (c < INT_MIN && sign == -1))
-        //     return 0; 
+		tmp[1] = tmp[2];
+		tmp[2] = tmp[2] * 10 + str[i] - 48;
+		tmp[0] = (tmp[2] - (str[i] - 48)) / 10;
+		if (tmp[0] != tmp[1])
+			return (9999999999999);
 		i++;
 	}
-	return (c * sign);
+	return (tmp[2] * sign);
 }
-
-
-
-
